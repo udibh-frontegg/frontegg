@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useAuth, useLoginWithRedirect, ContextHolder, AdminPortal } from "@frontegg/react";
 import './App.css';
+// import { useEffect } from 'react';
+import { useAuth, useLoginWithRedirect, ContextHolder } from "@frontegg/react";
 
 function App() {
   const { user, isAuthenticated } = useAuth();
@@ -17,11 +17,8 @@ function App() {
     window.location.href = `${baseUrl}/oauth/logout?post_logout_redirect_uri=${window.location.href}`;
   };
 
-  const showAdminPortal = () => {
-    AdminPortal.show();
-  };
-
   return (
+
     <div className="App">
       {isAuthenticated ? (
         <div>
@@ -32,18 +29,17 @@ function App() {
             <span>Logged in as: {user?.name}</span>
           </div>
           <div>
-            <button onClick={() => alert(user.accessToken)}>What is my access token?</button>
+            <button onClick={() => alert(user.accessToken)}>
+              What is my access token?
+            </button>
           </div>
           <div>
-            <button onClick={logout}>Click to logout</button>
-          </div>
-          <div>
-            <button onClick={showAdminPortal}>Settings</button>
+            <button onClick={() => logout()}>Click to logout</button>
           </div>
         </div>
       ) : (
         <div>
-          <button onClick={loginWithRedirect}>Click me to login</button>
+          <button onClick={() => loginWithRedirect()}>Click me to login</button>
         </div>
       )}
     </div>
