@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import './App.css';
+import App from './App.jsx'
+import './index.css';
 import { FronteggProvider } from '@frontegg/react';
 
 const contextOptions = {
@@ -10,11 +10,12 @@ const contextOptions = {
 };
 
 const authOptions = {
-  keepSessionAlive: true
+  keepSessionAlive: true // Uncomment this in order to maintain the session alive
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <FronteggProvider
     contextOptions={contextOptions}
     hostedLoginBox={true}
@@ -22,4 +23,4 @@ root.render(
   >
     <App />
   </FronteggProvider>
-);
+  , document.getElementById('root')); 
